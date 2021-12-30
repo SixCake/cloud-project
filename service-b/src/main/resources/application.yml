@@ -1,0 +1,42 @@
+server:
+  port: 9501
+spring:
+  profiles:
+    active: dev
+  application:
+    name: service-b
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+## 其他属性保持不变
+## Nacos registry address
+dubbo:
+  service:
+    name: service-b
+    version: 1.0.0
+  ## application
+  application:
+    name: service-b
+    id: service-b
+  registry:
+    address: nacos://localhost:8848
+    id: nacos
+    check: false
+  consummer:
+    check: false
+  protocol:
+    id: dubbo
+    port: -1
+  scan:
+    base-packages: com.sixcake.cloud.service
+
+##如果要使用自己创建的命名空间可以使用下面2种方式
+#dubbo.registry.address = nacos://10.20.153.10:8848?namespace=5cbb70a5-xxx-xxx-xxx-d43479ae0932
+#dubbo.registry.parameters.namespace=5cbb70a5-xxx-xxx-xxx-d43479ae0932

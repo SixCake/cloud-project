@@ -1,0 +1,35 @@
+server:
+  port: 9601
+spring:
+  profiles:
+    active: dev
+  application:
+    name: service-a
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+dubbo:
+  service:
+    name: service-a
+    version: 1.0.0
+  ## application
+  application:
+    name: service-a
+    id: service-a
+  registry:
+    address: nacos://localhost:8848
+    id: nacos
+    check: false
+  consummer:
+    check: false
+  protocol:
+    id: dubbo
+    port: -1
+  scan:
+    base-packages: com.sixcake.cloud.service
