@@ -10,8 +10,8 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>cloud-gateway</module>
         <module>cloud-auth</module>
+        <module>cloud-gateway</module>
         <module>cloud-common</module>
         <module>service-a</module>
         <module>service-b</module>
