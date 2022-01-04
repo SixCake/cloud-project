@@ -1,0 +1,18 @@
+version: '3'
+services:
+  service-a:
+    container_name: service-a
+    restart: always
+    build:
+      context: ../service-a
+      dockerfile: docker-config/Dockerfile
+    ports:
+      - '9601:9601'
+  service-b:
+    container_name: service-b
+    restart: always
+    build:
+      context: ../service-b
+      dockerfile: docker-config/Dockerfile
+    ports:
+      - '9501:9501'
