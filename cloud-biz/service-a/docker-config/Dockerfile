@@ -14,13 +14,16 @@ ADD . $MY_HOME
 # run maven verify
 RUN ["/usr/local/bin/mvn-entrypoint.sh","mvn","verify"]
 
-# 该镜像需要依赖的基础镜像
+# Second stage - build image
 FROM openjdk:8-jre-alpine
-# 将当前目录下的jar包复制到docker容器的/目录下
-COPY --from=builder target/service-a-1.0.0-SNAPSHOT.jar /service-a.jar
-# 声明服务运行在9601端口
-EXPOSE 9601
-# 指定docker容器启动时运行jar包
-ENTRYPOINT ["java", "-jar","/service-a.jar"]
+
+COPY --from=builder /app/target/*.jar /app.jar
+
+ENV JAVA_OPTS=""
+ENV SERVER_PORT 9601
+
+EXPOSE ${SERVER_PORT}
+
+ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/urandom -jar /app.jar" ]
 # 指定维护者的名字
 MAINTAINER sixCake

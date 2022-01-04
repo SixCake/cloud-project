@@ -13,13 +13,16 @@ ADD . $MY_HOME
 
 # run maven verify
 RUN ["/usr/local/bin/mvn-entrypoint.sh","mvn","verify"]
-# 该镜像需要依赖的基础镜像
+# Second stage - build image
 FROM openjdk:8-jre-alpine
-# 将当前目录下的jar包复制到docker容器的/目录下
-COPY --from=builder target/cloud-auth-1.0.0-SNAPSHOT.jar /cloud-auth.jar
-# 声明服务运行在9401端口
-EXPOSE 9401
-# 指定docker容器启动时运行jar包
-ENTRYPOINT ["java", "-jar","/cloud-auth.jar"]
+
+COPY --from=builder /app/target/*.jar /app.jar
+
+ENV JAVA_OPTS=""
+ENV SERVER_PORT 9401
+
+EXPOSE ${SERVER_PORT}
+
+ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/urandom -jar /app.jar" ]
 # 指定维护者的名字
 MAINTAINER sixCake
