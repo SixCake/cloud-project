@@ -1,6 +1,6 @@
 package com.sixcake.cloud.gateway.component;
 
-import com.sixcake.cloud.common.api.CommonResult;
+import com.sixcake.cloud.auth.api.CommonResult;
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

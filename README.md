@@ -12,7 +12,7 @@
 - cloud-gateway：网关服务，负责请求转发和鉴权功能，整合Spring Security Oauth2
 - service-a：受保护的API服务，用户鉴权通过后可以访问该服务，不整合Spring Security Oauth2
 - service-b：提供user服务，不对外暴露接口
-- service-api：服务api接口二方包
+- service-com.sixcake.cloud.auth.api：服务api接口二方包
 
 ## 具体实现
 
@@ -486,13 +486,13 @@ public class ResourceServiceImpl {
 ```java
 package com.sixcake.auth.config;
 
-import com.sixcake.auth.domain.dto.ResourceRoleRelationDto;
-import com.sixcake.auth.service.ResourceService;
+import ResourceRoleRelationDto;
+import ResourceService;
 import com.alibaba.fastjson.JSONObject;
-import com.alibaba.nacos.api.NacosFactory;
-import com.alibaba.nacos.api.config.ConfigService;
-import com.alibaba.nacos.api.config.listener.Listener;
-import com.alibaba.nacos.api.exception.NacosException;
+import com.alibaba.nacos.com.sixcake.cloud.auth.api.NacosFactory;
+import com.alibaba.nacos.com.sixcake.cloud.auth.api.config.ConfigService;
+import com.alibaba.nacos.com.sixcake.cloud.auth.api.config.listener.Listener;
+import com.alibaba.nacos.com.sixcake.cloud.auth.api.exception.NacosException;
 import io.netty.util.internal.StringUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
