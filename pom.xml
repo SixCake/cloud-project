@@ -15,7 +15,7 @@
         <module>cloud-base/cloud-common</module>
         <module>cloud-biz/service-a</module>
         <module>cloud-biz/service-b</module>
-        <module>cloud-biz/service-api</module>
+        <module>cloud-biz/service-com.sixcake.cloud.auth.api</module>
     </modules>
 
     <repositories>
