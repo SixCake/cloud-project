@@ -8,7 +8,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: localhost:8848
+        server-addr: poket-nacos:8848
 management:
   endpoints:
     web:
@@ -23,7 +23,7 @@ dubbo:
     name: service-a
     id: service-a
   registry:
-    address: nacos://localhost:8848
+    address: nacos://poket-nacos:8848
     id: nacos
     check: false
   consummer:

@@ -12,10 +12,9 @@
     <modules>
         <module>cloud-base/cloud-auth</module>
         <module>cloud-base/cloud-gateway</module>
-        <module>cloud-base/cloud-common</module>
         <module>cloud-biz/service-a</module>
         <module>cloud-biz/service-b</module>
-        <module>cloud-biz/service-com.sixcake.cloud.auth.api</module>
+        <module>cloud-biz/service-api</module>
     </modules>
 
     <repositories>

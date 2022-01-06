@@ -12,7 +12,15 @@
 - cloud-gateway：网关服务，负责请求转发和鉴权功能，整合Spring Security Oauth2
 - service-a：受保护的API服务，用户鉴权通过后可以访问该服务，不整合Spring Security Oauth2
 - service-b：提供user服务，不对外暴露接口
-- service-com.sixcake.cloud.auth.api：服务api接口二方包
+- service-api：服务api接口二方包
+
+## 启动
+
+> 1。 本地启动需host绑定
+```text
+127.0.0.1 poket-redis poket-nacos poket-auth 
+```
+
 
 ## 具体实现
 

@@ -15,6 +15,8 @@ services:
     depends_on:
       - mysql
     restart: on-failure
+    networks:
+      - app
   mysql:
     image: nacos/nacos-mysql:8.0.16
     container_name: poket-mysql
@@ -25,14 +27,18 @@ services:
       - 3306:3306
     volumes:
       - ~/mysql:/var/lib/mysql
+    networks:
+      - app
   redis:
     image: redis:5
     container_name: poket-redis
-    command: redis-server --appendonly yes
+    command: redis-server --port 6379 --appendonly yes
     volumes:
       - ~/redis/data:/data
     ports:
       - 6379:6379
+    networks:
+      - app
   cloud-auth:
     container_name: cloud-auth
     restart: always
@@ -44,6 +50,8 @@ services:
     depends_on:
       - nacos
       - redis
+    networks:
+      - app
   cloud-gateway:
     container_name: cloud-gateway
     restart: always
@@ -56,3 +64,8 @@ services:
       - nacos
       - redis
       - cloud-auth
+    networks:
+      - app
+networks:
+  app:
+    external: true

@@ -16,7 +16,7 @@ RUN ["/usr/local/bin/mvn-entrypoint.sh","mvn","verify"]
 
 
 # Second stage - build image
-FROM openjdk:8-jre-alpine
+FROM registry.cn-hangzhou.aliyuncs.com/poket/poket_hangzhou:openjdk-8-jdk-alpine
 
 COPY --from=builder /app/target/*.jar /app.jar
 
